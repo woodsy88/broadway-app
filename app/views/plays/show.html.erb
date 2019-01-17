@@ -1,2 +1,13 @@
-<h1>Plays#show</h1>
-<p>Find me in app/views/plays/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+                 <h2> <%= @play.title %></h2>
+                  <%= @play.description %>
+                  <div class="card-footer"><%= @play.director %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

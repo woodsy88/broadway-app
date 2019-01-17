@@ -1,6 +1,8 @@
 class PlaysController < ApplicationController
+  before_action :set_play, only: [:show, :edit, :update, :destroy]
+  
   def index
-    @plays = Play.all
+    @plays = Play.all.order("created_at DESC")
   end
 
   def new
@@ -9,6 +11,12 @@ class PlaysController < ApplicationController
 
   def create
     @play = Play.new(play_params)
+
+    if @play.save
+      redirect_to @play
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -26,5 +34,9 @@ class PlaysController < ApplicationController
     params.require(:play).permit(:title, :description, :director)
   end
 
-  
+  def set_play
+    @play = Play.find(params[:id])
+  end  
+
+
 end
