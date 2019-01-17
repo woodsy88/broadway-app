@@ -22,10 +22,20 @@ class PlaysController < ApplicationController
   def edit
   end
 
+  def update
+    if @play.update(play_params)
+      redirect_to @play
+    else
+      render 'edit'
+    end
+  end
+
   def show
   end
 
-  def _form
+  def destroy
+    @play.destroy
+    redirect_to plays_path
   end
 
   private
