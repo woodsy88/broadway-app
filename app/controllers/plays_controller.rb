@@ -1,5 +1,6 @@
 class PlaysController < ApplicationController
   before_action :set_play, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :delete]
   
   def index
     @plays = Play.all.order("created_at DESC")
@@ -11,6 +12,7 @@ class PlaysController < ApplicationController
 
   def create
     @play = Play.new(play_params)
+    @play.user_id = current_user.id
 
     if @play.save
       redirect_to @play
