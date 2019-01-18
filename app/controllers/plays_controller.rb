@@ -15,18 +15,20 @@ class PlaysController < ApplicationController
     @play.user_id = current_user.id
 
     if @play.save
-      redirect_to @play
+      redirect_to @play, notice: "your play has been created"
     else
       render 'new'
     end
   end
 
   def edit
+    authorize @play
   end
 
   def update
+    authorize @play
     if @play.update(play_params)
-      redirect_to @play
+      redirect_to @play, notice: "your play has been updated"
     else
       render 'edit'
     end
@@ -36,6 +38,7 @@ class PlaysController < ApplicationController
   end
 
   def destroy
+    authorize @play
     @play.destroy
     redirect_to plays_path
   end

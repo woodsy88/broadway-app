@@ -12,5 +12,8 @@
   <body>
   <%= render 'shared/nav' %>
     <%= yield %>
+
+    <%= js add_gritter(flash[:notice], title: "DailySmarty Notification", sticky: false, time: 1000) %> 
+    <%= js add_gritter(flash[:alert], title: "DailySmarty Notification", sticky: false, time: 1000) %> 
   </body>
 </html>

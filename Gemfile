@@ -74,3 +74,7 @@ gem 'bootstrap', '~> 4.2', '>= 4.2.1'
 gem 'jquery-rails'
 
 gem 'devise'
+
+gem 'pundit', '~> 2.0'
+
+gem 'gritter', '~> 1.2'
