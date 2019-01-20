@@ -1,14 +1,22 @@
 <div class="container">
-  <% @plays.each do |play| %>
   <div class="row">
-  <div class="col-md-4 d-flex">
-  <div class="card">
-    <div class="card-body flex-fill">
-      <h2 class="card-title"><%= play.title %></h2>
-      <%= link_to "view Play", play_path(play), class: "btn btn-primary" %>
-    </div>
+  <h1><%= params[:category] %></h1>
+    <% if @plays.count == 0 %>
+        <h3>THere are no plays currently in this category</h3>
+      <% else %>
+        <% @plays.each do |play| %>
+          <div class="col-md-4 d-flex">
+            <div class="card">
+              <div class="card-body flex-fill">
+                <h2 class="card-title"><%= play.title %></h2>
+                  <% if play.category.present?  %>
+                    <strong><%= play.category.name %></strong>
+                  <% end %>         
+                <%= link_to "view Play", play_path(play), class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>  
+        <% end %>
+    <% end %>
   </div>
-  </div>
-  </div>
-  <% end %>
 </div>
