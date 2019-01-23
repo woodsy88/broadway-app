@@ -1,28 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
+    <div class="col-md-4">
+      <%= image_tag @play.play_img.url(:medium), class: "card-img-top play" %>
+    </div>
+    <div class="col-md-8">
           <h2> <%= @play.title %></h2>
           <%= @play.description %>
           <%= @play.director %>
           <% if @play.category.present?  %>
             <strong><%= @play.category.name %></strong>
           <% end %>
-        </div>
         <% if user_signed_in? %>
           <% if @play.user_id == current_user.id  %>
-            <div class="card-footer">
               <%= link_to "Back", plays_path, class: "btn btn-default" %>
               <%= link_to "edit", edit_play_path(@play), class: "btn btn-primary"  %>
               <%= link_to "Delete", play_path(@play), 
                            method: :delete, 
                            data: { confirm: "Are you sure?" }, 
                            class: "btn btn-danger" %>
-            </div>
           <% end %>  
         <% end %>
-      </div>
+
     </div>
   </div>
 </div>
