@@ -78,3 +78,5 @@ gem 'devise'
 gem 'pundit', '~> 2.0'
 
 gem 'gritter', '~> 1.2'
+
+gem 'paperclip', '~> 6.1'

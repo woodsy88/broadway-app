@@ -15,7 +15,10 @@
             <div class="card-footer">
               <%= link_to "Back", plays_path, class: "btn btn-default" %>
               <%= link_to "edit", edit_play_path(@play), class: "btn btn-primary"  %>
-              <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+              <%= link_to "Delete", play_path(@play), 
+                           method: :delete, 
+                           data: { confirm: "Are you sure?" }, 
+                           class: "btn btn-danger" %>
             </div>
           <% end %>  
         <% end %>
