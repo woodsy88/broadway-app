@@ -4,23 +4,35 @@
       <%= image_tag @play.play_img.url(:medium), class: "card-img-top play" %>
     </div>
     <div class="col-md-8">
-          <h2> <%= @play.title %></h2>
-          <%= @play.description %>
-          <%= @play.director %>
-          <% if @play.category.present?  %>
-            <strong><%= @play.category.name %></strong>
-          <% end %>
-        <% if user_signed_in? %>
-          <% if @play.user_id == current_user.id  %>
-              <%= link_to "Back", plays_path, class: "btn btn-default" %>
-              <%= link_to "edit", edit_play_path(@play), class: "btn btn-primary"  %>
-              <%= link_to "Delete", play_path(@play), 
-                           method: :delete, 
-                           data: { confirm: "Are you sure?" }, 
-                           class: "btn btn-danger" %>
-          <% end %>  
-        <% end %>
+      <h2> <%= @play.title %></h2>
+        <%= @play.description %>
+        <%= @play.director %>
+      <% if @play.category.present?  %>
+          <strong><%= @play.category.name %></strong>
+      <% end %>
 
+    <% if user_signed_in? %>
+      <% if @play.user_id == current_user.id  %>
+          <%= link_to "Back", plays_path, class: "btn btn-default" %>
+          <%= link_to "edit", edit_play_path(@play), class: "btn btn-primary"  %>
+          <%= link_to "Delete", play_path(@play), 
+                        method: :delete, 
+                        data: { confirm: "Are you sure?" }, 
+                        class: "btn btn-danger" %>
+      <% end %>  
+    <% end %>
     </div>
+    <% if @play.reviews.any? %>
+        <div class="row">
+          <div class="col-md-8">
+            <h1>Reviews</h1>
+              <%= render @play.reviews %>
+          </div>
+        </div>
+    <% end %>
+
+<% if user_signed_in? %>
+  <%= link_to 'Add a Review', new_play_review_path(@play), class: "btn btn-outline-info" %>
+<% end %>
   </div>
 </div>

@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"} 
 
-  resources :plays
+  resources :plays do
+    resources :reviews
+  end
+  
   resources :categories
  
   root "plays#index"
