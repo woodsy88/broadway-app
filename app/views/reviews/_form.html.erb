@@ -2,11 +2,7 @@
 <%= render 'shared/errors', obj: @review %>
 <%= form_for [@play, @review], class: "form-horizontal" do |f| %>
 
-
-    <div class="form-group">
-        <%= f.label :rating, class: " col-sm-2 control-label" %>
-        <%= f.number_field :rating, class: "form-control" %>
-    </div>
+    <div id="review-rating"></div>
 
     <div class="form-group">
         <%= f.label :comment, class: " col-sm-2 control-label" %>
@@ -17,3 +13,10 @@
         <%= f.submit 'Save', class: "btn btn-primary btn-block" %>
     </div>
 <% end %>
+
+<script>
+    $('#review-rating').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+    });
+</script>
